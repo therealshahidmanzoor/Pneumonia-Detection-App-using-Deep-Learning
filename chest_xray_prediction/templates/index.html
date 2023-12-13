@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chest X-ray Pneumonia Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 0.5em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 1em;
+        }
+
+        .main-content {
+            padding: 2em;
+        }
+
+        .attract-users {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+
+        .attract-users h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .attract-users p {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 1em;
+        }
+
+        .attract-users img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+            margin-bottom: 1em;
+        }
+
+        .upload-form {
+            margin-top: 1em;
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #333;
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="file"] {
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #009688;
+            margin-top: 1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Chest X-ray Pneumonia Prediction</h1>
+        <p>Your source for accurate pneumonia predictions</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" onclick="toggleContactDetails()">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="main-content">
+        <div class="attract-users">
+            <h2>Discover the Power of AI in Healthcare</h2>
+            <p>Explore our advanced chest X-ray pneumonia prediction system. Accurate, fast, and reliable.</p>
+            <img src="{{ url_for('static', filename='img.png') }}" alt="AI in Healthcare"
+            class="attract-image">
+
+        </div>
+        <div class="upload-form">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <label for="file">Upload Chest X-ray Image:</label>
+                <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+                <button type="submit">Predict</button>
+            </form>
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="about" class="main-content">
+        <h2>About Chest X-ray Pneumonia Prediction</h2>
+        <p>We are dedicated to providing accurate predictions for pneumonia based on chest X-ray images. This works based on highly trained Deep Learning and CNN model.</p>
+    </section>
+
+    <section id="contact" class="main-content">
+        <h2>Contact Us</h2>
+        <p>Have questions or need assistance? Feel free to contact us!</p>
+        <div class="contact-details">
+            <p>Email: contact@meershahid543210@gmail.com</p>
+            <p>Phone: +91 7006843435</p>
+            <p>Address: WIT Solapur 413006</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Chest X-ray Pneumonia Prediction</p>
+    </footer>
+
+    <script>
+        function toggleContactDetails() {
+            var contactDetails = document.querySelector('.contact-details');
+            if (contactDetails.style.display === 'none') {
+                contactDetails.style.display = 'block';
+            } else {
+                contactDetails.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
