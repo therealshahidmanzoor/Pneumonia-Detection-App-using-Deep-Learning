@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .result-content {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .prediction h2 {
+            color: #333;
+        }
+
+        .prediction p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .prediction img {
+            max-width: 100%;
+            margin-top: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Chest X-ray Pneumonia Prediction</h1>
+        <p>Your source for accurate pneumonia predictions</p>
+    </header>
+
+    <section class="result-content">
+        <h2>Prediction Result</h2>
+        <div class="prediction">
+            <p>Pneumonia Probability: {{ prediction }}</p>
+            <!-- Add image or description based on prediction if needed -->
+            <!-- Example: -->
+            {% if prediction > 0.5 %}
+                <img src="{{ url_for('static', filename='unhealthy.png') }}" alt="Pneumonia Detected">
+                <p>Pneumonia has been detected in the X-ray. with chances of : {{prediction*100}}</p>
+            {% else %}
+                <img src="{{ url_for('static', filename='healthy.png') }}" alt="Normal">
+                <p>No signs of pneumonia in the X-ray. with chances of : {{prediction*100}}</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Chest X-ray Pneumonia Prediction</p>
+    </footer>
+
+</body>
+</html>
